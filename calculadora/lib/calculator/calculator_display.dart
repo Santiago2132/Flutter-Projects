@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CalculatorDisplay extends StatelessWidget {
-  const CalculatorDisplay({super.key});
+  final String display;
+
+  const CalculatorDisplay({super.key, required this.display});
 
   @override
   Widget build(BuildContext context) {
@@ -10,14 +12,15 @@ class CalculatorDisplay extends StatelessWidget {
       alignment: Alignment.centerRight,
       height: 100,
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: Theme.of(context).colorScheme.surfaceVariant,
         border: Border.all(color: Colors.grey),
       ),
-      child: const Text(
-        '0',
+      child: Text(
+        display,
         style: TextStyle(
           fontSize: 48,
           fontWeight: FontWeight.bold,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       ),
     );
