@@ -1,4 +1,4 @@
-class CalculatorLogic {
+class CalculatorLogic {//🐢
   String _displayValue = '0';
 
   String get displayValue => _displayValue;
@@ -18,4 +18,4 @@ class CalculatorLogic {
   void calculate() {
     // Implementar la lógica de cálculo aquí
   }
-}
+}//🐢

@@ -75,59 +75,176 @@ class _CalculatorState extends State<Calculator> {
         children: [
           CalculatorDisplay(display: _display),
           Expanded(
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4, // 4 columnas
-                childAspectRatio: 1, // Mantiene los botones cuadrados
-              ),
-              itemCount: 19, // Número total de botones
-              itemBuilder: (context, index) {
-                // Definir los botones
-                List<Map<String, dynamic>> buttons = [
-                  {'label': 'AC', 'color': Theme.of(context).colorScheme.errorContainer},
-                  {'label': 'CE', 'color': Theme.of(context).colorScheme.errorContainer},
-                  {'label': '%', 'color': Theme.of(context).colorScheme.secondaryContainer},
-                  {'label': '/', 'color': Theme.of(context).colorScheme.secondaryContainer},
-                  {'label': '7', 'color': Theme.of(context).colorScheme.surfaceVariant},
-                  {'label': '8', 'color': Theme.of(context).colorScheme.surfaceVariant},
-                  {'label': '9', 'color': Theme.of(context).colorScheme.surfaceVariant},
-                  {'label': 'X', 'color': Theme.of(context).colorScheme.secondaryContainer},
-                  {'label': '4', 'color': Theme.of(context).colorScheme.surfaceVariant},
-                  {'label': '5', 'color': Theme.of(context).colorScheme.surfaceVariant},
-                  {'label': '6', 'color': Theme.of(context).colorScheme.surfaceVariant},
-                  {'label': '-', 'color': Theme.of(context).colorScheme.secondaryContainer},
-                  {'label': '1', 'color': Theme.of(context).colorScheme.surfaceVariant},
-                  {'label': '2', 'color': Theme.of(context).colorScheme.surfaceVariant},
-                  {'label': '3', 'color': Theme.of(context).colorScheme.surfaceVariant},
-                  {'label': '0', 'color': Theme.of(context).colorScheme.surfaceVariant, 'isLarge': true},
-                  {'label': '.', 'color': Theme.of(context).colorScheme.surfaceVariant},
-                  {'label': '=', 'color': Theme.of(context).colorScheme.primaryContainer},
-                ];
-
-                // Si estamos en la posición del botón '+', lo colocamos más alto
-                if (index == 15) {
-                  return GridTile(
-                    child: CalculatorButton(
-                      label: '+',
-                      onPressed: _onButtonPressed,
-                      backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
-                      isTall: true, // Activa el tamaño doble
+            child: Column(
+              children: [
+                // Primera fila
+                Row(
+                  children: [
+                    Expanded(
+                      child: CalculatorButton(
+                        label: 'AC',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.errorContainer,
+                      ),
                     ),
-                  );
-                }
-
-                // Si es cualquier otro botón, lo renderizamos normalmente
-                Map<String, dynamic> btn = buttons[index < 15 ? index : index - 1];
-                return CalculatorButton(
-                  label: btn['label'],
-                  onPressed: _onButtonPressed,
-                  backgroundColor: btn['color'],
-                  isLarge: btn.containsKey('isLarge') ? btn['isLarge'] : false,
-                );
-              },
+                    Expanded(
+                      child: CalculatorButton(
+                        label: 'CE',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.errorContainer,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '%',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '/',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+                      ),
+                    ),
+                  ],
+                ),
+                // Segunda fila
+                Row(
+                  children: [
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '7',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '8',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '9',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: 'X',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+                      ),
+                    ),
+                  ],
+                ),
+                // Tercera fila
+                Row(
+                  children: [
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '4',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '5',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '6',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '-',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+                      ),
+                    ),
+                  ],
+                ),
+                // Cuarta fila
+                Row(
+                  children: [
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '1',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '2',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '3',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                      ),
+                    ),
+                    // Botón "+" que ocupa dos filas
+                    Expanded(
+                      child: Container(
+                        height: 150, // Altura para dos filas
+                        padding: const EdgeInsets.all(8.0),
+                        child: CalculatorButton(
+                          label: '+',
+                          onPressed: _onButtonPressed,
+                          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // Quinta fila
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 2, // Ocupa dos celdas
+                      child: CalculatorButton(
+                        label: '0',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                        isLarge: true,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '.',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                      ),
+                    ),
+                    Expanded(
+                      child: CalculatorButton(
+                        label: '=',
+                        onPressed: _onButtonPressed,
+                        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-
         ],
       ),
     );
